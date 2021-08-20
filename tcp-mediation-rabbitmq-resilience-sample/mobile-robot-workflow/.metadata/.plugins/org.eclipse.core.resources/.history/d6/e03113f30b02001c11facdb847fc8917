@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="task-status" startOnLoad="true" transports="rabbitmq" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence/>
+        <outSequence/>
+        <faultSequence/>
+    </target>
+</proxy>

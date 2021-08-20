@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="TaskStatus" startOnLoad="true" transports="rabbitmq" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <log level="full"/>
+            <property name="messageType" scope="axis2" type="STRING" value="text/plain"/>
+            <property name="OUT_ONLY" scope="default" type="STRING" value="true"/>
+            <call blocking="true">
+                <endpoint>
+                    <address uri="tcp://localhost:6061?contentType=text/plain">
+                        <suspendOnFailure>
+                            <initialDuration>-1</initialDuration>
+                            <progressionFactor>1</progressionFactor>
+                        </suspendOnFailure>
+                        <markForSuspension>
+                            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+                        </markForSuspension>
+                    </address>
+                </endpoint>
+            </call>
+            <log level="custom">
+                <property name="Status" value="The message process successfully"/>
+            </log>
+        </inSequence>
+        <outSequence/>
+        <faultSequence>
+            <log level="custom">
+                <property name="Status" value="Could not process the message"/>
+            </log>
+            <property name="SET_REQUEUE_ON_ROLLBACK" scope="axis2" type="STRING" value="true"/>
+        </faultSequence>
+    </target>
+    <parameter name="rabbitmq.message.requeue.delay">30000</parameter>
+    <parameter name="rabbitmq.queue.auto.ack">false</parameter>
+    <parameter name="rabbitmq.channel.consumer.qos">1</parameter>
+    <parameter name="rabbitmq.queue.name">taskstatus</parameter>
+    <parameter name="rabbitmq.connection.factory">AMQPConnectionFactory</parameter>
+</proxy>

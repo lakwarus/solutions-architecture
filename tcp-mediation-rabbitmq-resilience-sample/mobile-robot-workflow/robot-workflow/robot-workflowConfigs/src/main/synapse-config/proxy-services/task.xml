@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="Task" startOnLoad="true" transports="tcp" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <log level="full"/>
+            <smooks config-key="conf:myresources/smooksconfig.xml">
+                <input type="text"/>
+                <output type="xml"/>
+            </smooks>
+            <log level="full"/>
+            <datamapper config="gov:datamapper/XML2JSON.dmc" description="JSONPayLoad" inputSchema="gov:datamapper/XML2JSON_inputSchema.json" inputType="XML" outputSchema="gov:datamapper/XML2JSON_outputSchema.json" outputType="JSON" xsltStyleSheet="gov:datamapper/XML2JSON_xsltStyleSheet.xml"/>
+            <log level="full"/>
+            <property name="OUT_ONLY" scope="default" type="STRING" value="true"/>
+            <property name="FORCE_SC_ACCEPTED" scope="axis2" type="STRING" value="true"/>
+            <send>
+                <endpoint>
+                    <address uri="rabbitmq:/task?rabbitmq.server.host.name=localhost&amp;rabbitmq.server.port=5672&amp;rabbitmq.server.user.name=guest&amp;rabbitmq.server.password=guest">
+                        <suspendOnFailure>
+                            <initialDuration>-1</initialDuration>
+                            <progressionFactor>1</progressionFactor>
+                        </suspendOnFailure>
+                        <markForSuspension>
+                            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+                        </markForSuspension>
+                    </address>
+                </endpoint>
+            </send>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </target>
+    <parameter name="transport.tcp.responseClient">true</parameter>
+    <parameter name="transport.tcp.inputType">string</parameter>
+    <parameter name="transport.tcp.recordDelimiter">,</parameter>
+    <parameter name="transport.tcp.contentType">text/plain</parameter>
+    <parameter name="transport.tcp.port">6060</parameter>
+    <parameter name="transport.tcp.recordDelimiterType">character</parameter>
+</proxy>

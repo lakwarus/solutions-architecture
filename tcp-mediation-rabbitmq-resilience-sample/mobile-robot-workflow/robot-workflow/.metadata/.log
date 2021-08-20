@@ -1,0 +1,24 @@
+!SESSION 2021-08-20 11:52:21.106 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_252
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_LK
+Framework arguments:  /org.wso2.integrationstudio.rcp.plugin/icons/IntegrationStudioRounded.icns -keyring /Users/lakmal/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 /org.wso2.integrationstudio.rcp.plugin/icons/IntegrationStudioRounded.icns -keyring /Users/lakmal/.eclipse_keyring
+
+!ENTRY org.eclipse.ui 2 0 2021-08-20 11:52:44.067
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2021-08-20 11:52:44.067
+!MESSAGE Commands should really have a category: plug-in='org.activiti.designer.kickstart.eclipse', id='org.activiti.designer.kickstart.command.refreshCmisNavigator', categoryId='org.activiti.designer.kickstart.eclipse.categor'
+!SUBENTRY 1 org.eclipse.ui 2 0 2021-08-20 11:52:44.067
+!MESSAGE Commands should really have a category: plug-in='org.eclipse.papyrus.infra.ui.emf', id='org.eclipse.papyrus.infra.emf.readonly.EnableWriteCommand', categoryId='org.eclipse.papyrus.editor.category'
+
+!ENTRY org.eclipse.ui 2 0 2021-08-20 11:52:44.554
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2021-08-20 11:52:44.554
+!MESSAGE Commands should really have a category: plug-in='org.activiti.designer.kickstart.eclipse', id='org.activiti.designer.kickstart.command.refreshCmisNavigator', categoryId='org.activiti.designer.kickstart.eclipse.categor'
+!SUBENTRY 1 org.eclipse.ui 2 0 2021-08-20 11:52:44.554
+!MESSAGE Commands should really have a category: plug-in='org.eclipse.papyrus.infra.ui.emf', id='org.eclipse.papyrus.infra.emf.readonly.EnableWriteCommand', categoryId='org.eclipse.papyrus.editor.category'
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2021-08-20 11:52:48.638
+!MESSAGE Removing PartDescriptorImpl with the "org.wso2.sample.multipage.form.editor.editors.FormView" id and the "My View" label.It points to the non available "bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" class. Bundle might have been uninstalled
